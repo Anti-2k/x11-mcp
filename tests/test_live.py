@@ -453,7 +453,7 @@ def test_stdio_server_cleans_up(ending):
                 out = (await s.call_tool("launch", {"command": TERMINAL})).content[0].text
                 assert "new window" in out, out
                 bad = await s.call_tool("view_workspace", {"workspace": 99})
-                assert bad.isError
+                assert getattr(bad, "is_error", None) or getattr(bad, "isError", False)  # renamed in mcp 2
                 record = json.loads((runtime_base() / name / "desktop.json").read_text())
                 state["server_pid"] = record["pid"]
                 state["apps"] = _pids_with_display(record["display"])
