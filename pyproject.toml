@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "x11-mcp"
+version = "0.1.0"
+description = "MCP server giving agents a private headless X11 desktop, isolated from the user's session"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+dependencies = ["mcp>=1.2", "python-xlib>=0.33", "Pillow>=9.1"]
+classifiers = [
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: Desktop Environment :: Window Managers",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/Anti-2k/a11"
+
+[project.scripts]
+x11-mcp = "x11_mcp.server:main"
+
+[tool.setuptools]
+packages = ["x11_mcp"]

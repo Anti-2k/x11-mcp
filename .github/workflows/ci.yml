@@ -1,0 +1,31 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pip:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.10", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: sudo apt-get update && sudo apt-get install -y xvfb openbox dbus xterm x11vnc tigervnc-standalone-server
+      - run: pip install ".[test]"
+      - run: x11-mcp check
+      - run: X11_MCP_LIVE=1 python -m pytest -q
+      - run: X11_MCP_LIVE=1 X11_MCP_SERVER=xvnc python -m pytest -q tests/test_live.py
+
+  nix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      - run: nix build --print-build-logs
+      - run: nix run . -- check
+      - run: nix develop -c env X11_MCP_LIVE=1 python -m pytest -q

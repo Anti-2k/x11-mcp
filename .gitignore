@@ -1,0 +1,5 @@
+__pycache__/
+result
+*.egg-info/
+build/
+AGENTS.md
