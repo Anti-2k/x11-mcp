@@ -18,7 +18,7 @@ _DISTROS = [
     ("void", "sudo xbps-install xorg-server-xvfb openbox dbus", "sudo xbps-install tigervnc x11vnc"),
     ("alpine", "doas apk add xvfb openbox dbus", "doas apk add tigervnc x11vnc"),
     ("guix", "guix install xorg-server openbox dbus", "guix install tigervnc-server x11vnc"),
-    ("nixos", "nix run github:Anti-2k/a11  (bundles everything)", ""),
+    ("nixos", "nix run github:Anti-2k/x11-mcp  (bundles everything)", ""),
 ]
 
 

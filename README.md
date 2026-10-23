@@ -19,11 +19,11 @@ Apps run on their X11 backend, so this tests an app's X11 path, not its Wayland 
 The flake bundles everything (Xvfb, Openbox, `dbus-daemon`, TigerVNC's `Xvnc`, `x11vnc`):
 
 ```sh
-claude mcp add --scope user x11-desktop -- nix run github:Anti-2k/a11
+claude mcp add --scope user x11-desktop -- nix run github:Anti-2k/x11-mcp
 ```
 
-Or build a local copy: `git clone https://github.com/Anti-2k/a11 && cd
-a11 && nix build`, then point your client at `result/bin/x11-mcp`.
+Or build a local copy: `git clone https://github.com/Anti-2k/x11-mcp && cd
+x11-mcp && nix build`, then point your client at `result/bin/x11-mcp`.
 
 ### Other distros
 
@@ -47,8 +47,8 @@ a11 && nix build`, then point your client at `result/bin/x11-mcp`.
    pipx. Its Python dependencies (`mcp`, `python-xlib`, `Pillow`) come as wheels.
 
    ```sh
-   uv tool install git+https://github.com/Anti-2k/a11
-   # or: pipx install git+https://github.com/Anti-2k/a11
+   uv tool install git+https://github.com/Anti-2k/x11-mcp
+   # or: pipx install git+https://github.com/Anti-2k/x11-mcp
    ```
 
 3. Check that everything is found, then register it:

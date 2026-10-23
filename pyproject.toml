@@ -21,7 +21,7 @@ classifiers = [
 test = ["pytest"]
 
 [project.urls]
-Homepage = "https://github.com/Anti-2k/a11"
+Homepage = "https://github.com/Anti-2k/x11-mcp"
 
 [project.scripts]
 x11-mcp = "x11_mcp.server:main"
